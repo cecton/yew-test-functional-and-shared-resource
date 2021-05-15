@@ -24,8 +24,8 @@ console_error_panic_hook = { version = "0.1.6", optional = true }
 #
 # Unfortunately, `wee_alloc` requires nightly Rust when targeting wasm for now.
 wee_alloc = { version = "0.4.5", optional = true }
-yew = { git = "https://github.com/yewstack/yew", rev = "3d8ea6b716d9" }
-yew-functional = { git = "https://github.com/yewstack/yew", rev = "3d8ea6b716d9" }
+yew = { git = "https://github.com/yewstack/yew", branch = "master" }
+yew-functional = { git = "https://github.com/yewstack/yew", branch = "master" }
 wasm-bindgen-futures = "0.4"
 futures-timer = { version = "3.0.2", features = ["wasm-bindgen"] }
 

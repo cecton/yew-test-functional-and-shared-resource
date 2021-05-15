@@ -20,15 +20,15 @@ extern "C" {
 
 #[function_component(Test)]
 pub fn test() -> Html {
-    let (starting, set_starting) = use_state(|| true);
-    let (res, set_res) = use_state(|| 0_u32);
+    let starting = use_state(|| true);
+    let res = use_state(|| 0_u32);
 
     if *starting {
         let res = res.clone();
-        set_starting(false);
+        starting.set(false);
         spawn_local(async move {
             loop {
-                log(&format!("{}", res));
+                log(&res.to_string());
                 let _ = futures_timer::Delay::new(Duration::from_secs(1)).await;
             }
         });
@@ -37,7 +37,7 @@ pub fn test() -> Html {
     let label = res.to_string();
 
     html! {
-        <div onclick=Callback::from(move |_| set_res(*res + 1))>{label}</div>
+        <div onclick=Callback::from(move |_| res.set(*res + 1))>{ label }</div>
     }
 }
 
